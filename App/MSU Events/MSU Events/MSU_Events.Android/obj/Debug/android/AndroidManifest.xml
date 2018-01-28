@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.MSU_Events" android:installLocation="auto">
+  <!--suppress UsesMinSdkAttributes-->
+  <uses-sdk android:minSdkVersion="15" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+  <application android:label="MSU-Events.Android" android:icon="@drawable/icon" android:name="md502a5153348f5984727904aaa3118c9d0.GeofenceAppStarter" android:allowBackup="true" android:debuggable="true">
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <activity android:configChanges="orientation|screenSize" android:icon="@drawable/icon" android:label="MSU_Events" android:theme="@style/MainTheme" android:name="md502a5153348f5984727904aaa3118c9d0.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <service android:name="md5a37b3c44f38f90ac16e1feac99e94a33.GeofenceService" />
+    <receiver android:name="md5bb8cda7c6f2e92ce076bef532eff3783.GeofenceBootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+    <receiver android:name="md5bb8cda7c6f2e92ce076bef532eff3783.GeofenceBroadcastReceiver">
+      <intent-filter>
+        <action android:name="com.companyname.MSU_Events.ACTION_RECEIVE_GEOFENCE" />
+      </intent-filter>
+    </receiver>
+    <service android:name="md5bb8cda7c6f2e92ce076bef532eff3783.GeofenceLocationService" />
+    <service android:name="md5bb8cda7c6f2e92ce076bef532eff3783.GeofenceTransitionsIntentService" />
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="com.companyname.MSU_Events.mono.MonoRuntimeProvider.__mono_init__" />
+    <!--suppress ExportedReceiver-->
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.com.companyname.MSU_Events" />
+      </intent-filter>
+    </receiver>
+    <meta-data android:name="android.support.VERSION" android:value="25.4.0" />
+  </application>
+</manifest>
